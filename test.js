@@ -8,6 +8,13 @@ var model = {
 			max: 10,
 			min: 1
 		}
+	},
+	surname: {
+		type: 'string',
+		length: {		// For now, length do nothng.
+			max: 3,
+			min: 1
+		}
 	}
 };
 var user = Modelate('User').model(model);
