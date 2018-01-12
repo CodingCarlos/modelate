@@ -89,7 +89,7 @@ Use a custom function to check at your own criteria. The only necessary thing is
 ```
 
 The function might look like this: 
-```
+```javascript
 function is42(value) {
   var allowed = [42, '42', 'cuarenta y dos', 'fourty two', 'the answer to the life the universe and everything'];
   if(allowedValues.indexOf(value) === -1) {
