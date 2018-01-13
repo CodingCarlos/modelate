@@ -54,10 +54,8 @@ var myUserData = {
 	age: 19,
 	dni: '51402430A'
 };
-var myUser = User.modelate(myUserData);
-console.log('........ myUser:');	
-console.log(myUser);	
-console.log('................');	
+// var myUser = User.modelate(myUserData);
+// console.log(myUser);	
 
 var messageModel = {
 	user: {
@@ -80,7 +78,8 @@ var Message = Modelate('Message').set(messageModel);
 var myMessageData = {
 	message: 'I am using models inside models. Crazy.',
 	// date: new Date(),
-	user: myUser
+	// user: myUser
+	user: myUserData
 };
 var myMessage = Message.modelate(myMessageData);
 console.log(myMessage);	
