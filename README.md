@@ -1,4 +1,10 @@
 # modelate
+![shieldsIO](https://img.shields.io/github/issues/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/github/release/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/github/license/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/david/CodingCarlos/modelate.svg)
+[![Build Status](https://travis-ci.org/CodingCarlos/modelate.svg?branch=master)](https://travis-ci.org/CodingCarlos/modelate)
+
 A data modeling tool for NodeJS. It's 100% database agnostic, and 100% customizable.
 
 # How does it work?
@@ -145,12 +151,12 @@ var geopoint = Modelate('Geopoint').set({
 
 // Now, you can validate Geopoint objects ^^
 var myGeopoint = {
-	name: 'Batman Symbol'
+	name: 'Batman Symbol',
 	coords: {
 		lat: 26.357896,
 		long: 127.783809
 	}
-}
+};
 
 var batman = geopoint.modelate(myGeopoint);
 console.log(batman);
