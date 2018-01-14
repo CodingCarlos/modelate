@@ -42,20 +42,22 @@ Validators are just functions. It will be executed for each property, and return
  - [Length](#length)
  - [Value](#value)
  - [Custom function](#custom-function)
+ - [Date](#date)
+ - [Model](#model)
  
- ## Type
- If the data has not the specifed type, validation will fail, and that field will not be added to final validated data.
- 
- ```javascript
- {
-     type: String	// Check if data has a JS type (uses typeof)
- }
- ```
+## Type
+If the data has not the specifed type, validation will fail, and that field will not be added to final validated data.
+
+```javascript
+{
+	type: String	// Check if data has a JS type (uses typeof)
+}
+```
   
- ## Length
- Check data length. It uses default .length param, so it's valid for so much types.
- 
- ```javascript
+## Length
+Check data length. It uses default .length param, so it's valid for so much types.
+
+```javascript
 {
 	length: {
     eq: Number,		// Exact allowed value
@@ -65,8 +67,8 @@ Validators are just functions. It will be executed for each property, and return
 }
  ```
  
- ## Value
-  Check data length. It uses default .length param, so it's valid for so much types.
+## Value
+Check data length. It uses default .length param, so it's valid for so much types.
  
  ```javascript
 {
@@ -97,4 +99,59 @@ function is42(value) {
   }
   return true;
 }
+```
+
+## Date
+Check if data is a JavaScript Date. Just need to set a boolean `date` parameter, like: 
+
+```javascript
+{
+	data: Boolean	// Check if data is a JS Date
+}
+```
+> _Remember that JavaScript dates has type `Object`_
+
+
+## Model
+Yes, models can also validate (and modelate) other models. It's just neccessary the model to exists. To add that model validation, just set a property "model", with the string value of the model name:
+
+```javascript
+{
+	model: String	// Check if data is of a defined model
+}
+```
+An example of when and how to use it, would be a geopoint:
+```javascript
+var coords = Modelate('Coords').set({ 
+	lat: {
+		type: 'number'
+	}, 
+	lon: {
+		type: 'number'
+	}
+});
+
+var geopoint = Modelate('Geopoint').set({
+	coords: {
+		model: 'Coords'
+	},
+	name: {
+		type: 'String',
+		length: {
+			max: 140
+		}
+	}
+});
+
+// Now, you can validate Geopoint objects ^^
+var myGeopoint = {
+	name: 'Batman Symbol'
+	coords: {
+		lat: 26.357896,
+		long: 127.783809
+	}
+}
+
+var batman = geopoint.modelate(myGeopoint);
+console.log(batman);
 ```
