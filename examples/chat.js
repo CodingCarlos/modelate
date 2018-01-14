@@ -55,7 +55,7 @@ var myUserData = {
 	dni: '51402430A',
 	unexpected: 'property'
 };
-var myUser = User.modelate(myUserData);
+// var myUser = User.modelate(myUserData);
 // console.log(myUser);	
 
 var messageModel = {
@@ -63,9 +63,9 @@ var messageModel = {
 		type: 'object',
 		model: 'User'
 	},
-	// date: {
-	// 	type: 'date'
-	// },
+	date: {
+		date: true
+	},
 	message: {
 		type: 'string',
 		length: {
@@ -79,9 +79,8 @@ var Message = Modelate('Message').set(messageModel);
 // Modelate a message
 var myMessageData = {
 	message: 'Using models inside models. Crazy.',
-	// date: new Date(),
-	user: myUser
-	// user: myUserData
+	date: new Date(),
+	user: myUserData
 };
 var myMessage = Message.modelate(myMessageData);
 console.log(myMessage);	
