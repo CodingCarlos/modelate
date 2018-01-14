@@ -66,7 +66,7 @@ Check data length. It uses default .length param, so it's valid for so much type
 ```javascript
 {
 	length: {
-    eq: Number,		// Exact allowed value
+		eq: Number,		// Exact allowed value
 		max: Number,	// Maximum allowed value
 		min: Number		// Minimum allowed value
 	}
@@ -99,11 +99,11 @@ Use a custom function to check at your own criteria. The only necessary thing is
 The function might look like this: 
 ```javascript
 function is42(value) {
-  var allowed = [42, '42', 'cuarenta y dos', 'fourty two', 'the answer to the life the universe and everything'];
-  if(allowedValues.indexOf(value) === -1) {
-    return false;
-  }
-  return true;
+	var allowed = [42, '42', 'cuarenta y dos', 'fourty two', 'the answer to the life the universe and everything'];
+	if (allowedValues.indexOf(value) === -1) {
+		return false;
+	}
+	return true;
 }
 ```
 
