@@ -1,5 +1,5 @@
 /* Just a first basic test */
-var Modelate = require('./index');
+var Modelate = require('../index');
 
 var model = {
 	name: {
@@ -44,13 +44,13 @@ var model = {
 		}
 	}
 };
-var user = Modelate('User').model(model);
+var user = Modelate('User').set(model);
 
 var data = {
 	name: 'Paco',
 	surname: 'santos',
 	age: 19,
-	dni: '41402430A'
+	dni: '51402430A'
 };
 var result = user.modelate(data);
 
