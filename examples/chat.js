@@ -7,45 +7,45 @@ var userModel = {
 		type: 'string',
 		length: {		// For now, length do nothng.
 			max: 10,
-			min: 1
+			min: 1,
 		},
 		value: {
-			eq: 'Paco'
-		}
+			eq: 'Paco',
+		},
 	},
 	surname: {
 		type: 'string',
 		length: {		// For now, length do nothng.
 			max: 3,
-			min: 1
+			min: 1,
 		},
 		value: {
-			contains: 'os'
-		}
+			contains: 'os',
+		},
 	},
 	age: {
 		type: 'number',
 		value: {
 			max: 95,
-			min: 18
-		}
+			min: 18,
+		},
 	},
 	dni: {
 		type: 'string',
 		value: {
 			max: 95,
-			min: 18
+			min: 18,
 		},
 		func: function startOnFive(value) {
-			if(value.charAt(0) === '5') {
+			if (value.charAt(0) === '5') {
 				return true;
 			}
 
 			return false;
-		}
-	}
+		},
+	},
 };
-var User = Modelate('User').set(userModel);
+Modelate('User').set(userModel);
 
 // Modelate a user
 var myUserData = {
@@ -53,26 +53,24 @@ var myUserData = {
 	surname: 'santos',
 	age: 19,
 	dni: '51402430A',
-	unexpected: 'property'
+	unexpected: 'property',
 };
-// var myUser = User.modelate(myUserData);
-// console.log(myUser);	
 
 var messageModel = {
 	user: {
 		type: 'object',
-		model: 'User'
+		model: 'User',
 	},
 	date: {
-		date: true
+		date: true,
 	},
 	message: {
 		type: 'string',
 		length: {
 			min: 1,
-			max: 255
-		}
-	}
+			max: 255,
+		},
+	},
 };
 var Message = Modelate('Message').set(messageModel);
 
@@ -80,7 +78,7 @@ var Message = Modelate('Message').set(messageModel);
 var myMessageData = {
 	message: 'Using models inside models. Crazy.',
 	date: new Date(),
-	user: myUserData
+	user: myUserData,
 };
 var myMessage = Message.modelate(myMessageData);
-console.log(myMessage);	
+console.log(myMessage);
