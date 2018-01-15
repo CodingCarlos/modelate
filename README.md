@@ -1,4 +1,10 @@
 # modelate
+![shieldsIO](https://img.shields.io/github/issues/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/github/release/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/github/license/CodingCarlos/modelate.svg)
+![shieldsIO](https://img.shields.io/david/CodingCarlos/modelate.svg)
+[![Build Status](https://travis-ci.org/CodingCarlos/modelate.svg?branch=master)](https://travis-ci.org/CodingCarlos/modelate)
+
 A data modeling tool for NodeJS. It's 100% database agnostic, and 100% customizable.
 
 # How does it work?
@@ -60,7 +66,7 @@ Check data length. It uses default .length param, so it's valid for so much type
 ```javascript
 {
 	length: {
-    eq: Number,		// Exact allowed value
+		eq: Number,		// Exact allowed value
 		max: Number,	// Maximum allowed value
 		min: Number		// Minimum allowed value
 	}
@@ -93,11 +99,11 @@ Use a custom function to check at your own criteria. The only necessary thing is
 The function might look like this: 
 ```javascript
 function is42(value) {
-  var allowed = [42, '42', 'cuarenta y dos', 'fourty two', 'the answer to the life the universe and everything'];
-  if(allowedValues.indexOf(value) === -1) {
-    return false;
-  }
-  return true;
+	var allowed = [42, '42', 'cuarenta y dos', 'fourty two', 'the answer to the life the universe and everything'];
+	if (allowedValues.indexOf(value) === -1) {
+		return false;
+	}
+	return true;
 }
 ```
 
@@ -145,13 +151,57 @@ var geopoint = Modelate('Geopoint').set({
 
 // Now, you can validate Geopoint objects ^^
 var myGeopoint = {
-	name: 'Batman Symbol'
+	name: 'Batman Symbol',
 	coords: {
 		lat: 26.357896,
 		long: 127.783809
 	}
-}
+};
 
 var batman = geopoint.modelate(myGeopoint);
 console.log(batman);
 ```
+
+# Tests
+
+I'm currently adding tests to this code. I'm using Jasmine, and saving tests in `/spec` folder.
+
+To run tests, just execute:
+```
+npm test
+```
+
+First time you run tests, you might need to install Jasmine, and other possible test dependencies. To do it fastly, just execute:
+```
+npm install
+```
+
+And now you can run tests ^^
+
+## Test coverage:
+Master version might not have the last test updates. Check out the `develop` branch to see the last updates. Also, the actual test coverage (in `develop` branch) is fully referenced in #3 issue.
+
+ - [ ] Core
+	 - [x] Exported module
+	 - [x] Model
+	 - [x] Modelate
+	 - [ ] Validate
+ - [ ] Validators
+	 - [ ] Type
+	 - [ ] Length
+	 - [ ] Value
+	 - [ ] Custom function
+	 - [ ] Date
+	 - [ ] Model
+
+# Contribute
+You can use this code as you like. If you find a bug, or want to ask for a feature, just open an issue, and we'll do our best. If you can fix it, do a pull request to dev branch, and we promise to review it as fast as possible to merge it.
+
+If you are new on this open source world, here is a short guide about how to make a pull request to contribute:
+
+ 1. Fork then clone `git clone git@github.com:your-username/modelate.git` **CodingCarlos/modelate** repository.
+ 2. Create a new branch in **your personal forked repo**, with a name similar to your edits, such as `fix-whatever`.
+ 3. Make your edits inside your new branch.
+ 4. Commit them and push them back to **your personal github fork**.
+ 5. Make a new Pull Request on the **CodingCarlos/modelate** repo. Point your branch to the `dev` `CodingCarlos/modelate`'s branch and submit.
+ 6. We will do my best to review and accept the code as soon as possible.
