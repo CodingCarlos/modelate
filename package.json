@@ -4,7 +4,7 @@
   "description": "A simple data modeling tool for NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/CodingCarlos/modelate/issues"
   },
-  "homepage": "https://github.com/CodingCarlos/modelate#readme"
+  "homepage": "https://github.com/CodingCarlos/modelate#readme",
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
 }
