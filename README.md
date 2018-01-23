@@ -187,14 +187,14 @@ And now you can run tests ^^
 ## Test coverage:
 Master version might not have the last test updates. Check out the `develop` branch to see the last updates. Also, the actual test coverage (in `develop` branch) is fully referenced in #3 issue.
 
- - [ ] Core
+ - [x] Core
 	 - [x] Exported module
 	 - [x] Model
 	 - [x] Modelate
-	 - [ ] Validate
+	 - [x] Validate
  - [ ] Validators
-	 - [ ] Type
-	 - [ ] Length
+	 - [x] Type
+	 - [x] Length
 	 - [ ] Value
 	 - [ ] Custom function
 	 - [ ] Date
