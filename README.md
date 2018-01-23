@@ -7,11 +7,17 @@
 
 A data modeling tool for NodeJS. It's 100% database agnostic, and 100% customizable.
 
+# How to install
+Use NPM to install the package:
+```
+npm install modelate --save
+```
+
 # How does it work?
 Create a model, and turn your objects into that model. 
 
 ```javascript
-var Modelate = require('./index');
+var Modelate = require('modelate');
 
 var model = {
 	name: {
@@ -181,14 +187,14 @@ And now you can run tests ^^
 ## Test coverage:
 Master version might not have the last test updates. Check out the `develop` branch to see the last updates. Also, the actual test coverage (in `develop` branch) is fully referenced in #3 issue.
 
- - [ ] Core
+ - [x] Core
 	 - [x] Exported module
 	 - [x] Model
 	 - [x] Modelate
-	 - [ ] Validate
+	 - [x] Validate
  - [ ] Validators
-	 - [ ] Type
-	 - [ ] Length
+	 - [x] Type
+	 - [x] Length
 	 - [ ] Value
 	 - [ ] Custom function
 	 - [ ] Date
