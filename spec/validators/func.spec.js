@@ -1,10 +1,6 @@
 const valid = require('../../lib/validators/func');
 
-
-
-describe(' - Function validator', () => {
-	
-
+describe(' - Function validator', () => {	
 	it('shall be a function', () => {
 		expect(typeof valid).toEqual('function');
 	});
