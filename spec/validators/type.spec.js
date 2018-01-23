@@ -17,7 +17,6 @@ describe(' - Type validator', () => {
 		expect(typeof valid).toEqual('function');
 	});
 
-
 	for (let key in typesKeys) {
 		it('shall validate '+ typesKeys[key] +' when no model set', () => {
 			expect(valid(types[key], {})).toEqual(true);
