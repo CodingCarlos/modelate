@@ -9,7 +9,6 @@ const types = {
 	object: obj, 
 	number: num
 };
-
 const typesKeys = Object.keys(types);
 
 describe(' - Type validator', () => {
