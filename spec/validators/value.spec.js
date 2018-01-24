@@ -1,13 +1,18 @@
 const valid = require('../../lib/validators/value');
+const util = require('../../lib/util');
+
+// Update tests
 
 const str = 'Hello world';
-// const obj = {hello: 'world'};
-const num = 42;
+const obj = {hello: 'world'};
 const bool = true;
+const num = 42;
 
 const types = {
 	string: str,
-	// object: obj, 
+	boolean: bool,
+	// object: util.clone(obj), 
+	object: obj, 
 	number: num
 };
 const typesKeys = Object.keys(types);
@@ -40,8 +45,9 @@ describe(' - Date validator', () => {
 				};
 
 				beforeEach(function () {
+					const val = (typesKeys[validType] === 'object') ? util.clone(obj) : types[typesKeys[validType]];
 					model.value = { 
-						eq: types[typesKeys[validType]]
+						eq: val
 					};
 				});
 
@@ -55,15 +61,182 @@ describe(' - Date validator', () => {
 	});
 
 	describe('max filter', () => {
-		// ToDo: TEST MAX FILTER
+
+		it('shall understand a number', () => {
+			const model = {
+				value: {
+					max: num
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall do nothing with anything else', () => {
+			const model = {
+				value: {
+					max: 'num'
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall allow numbers lower than expected', () => {
+			const model = {
+				value: {
+					max: num
+				}
+			};
+			const result = valid((num - 1), model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall allow numbers equal than expected', () => {
+			const model = {
+				value: {
+					max: num
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall NOT allow numbers higher than expected', () => {
+			const model = {
+				value: {
+					max: num
+				}
+			};
+			const result = valid((num + 1), model);
+			expect(result).toEqual(false);
+		});
 	});
 
 	describe('min filter', () => {
-		// ToDo: TEST MIN FILTER
+
+		it('shall understand a number', () => {
+			const model = {
+				value: {
+					min: num
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall do nothing with anything else', () => {
+			const model = {
+				value: {
+					min: 'num'
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall NOT allow numbers lower than expected', () => {
+			const model = {
+				value: {
+					min: num
+				}
+			};
+			const result = valid((num - 1), model);
+			expect(result).toEqual(false);
+		});
+
+		it('shall allow numbers equal than expected', () => {
+			const model = {
+				value: {
+					min: num
+				}
+			};
+			const result = valid(num, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall allow numbers higher than expected', () => {
+			const model = {
+				value: {
+					min: num
+				}
+			};
+			const result = valid((num + 1), model);
+			expect(result).toEqual(true);
+		});
 	});
 	
 	describe('contains filter', () => {
-		// ToDo: TEST CONTAINS FILTER
-	});
+		
+		it('shall validate a equal string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid(str, model);
+			expect(result).toEqual(true);
+		});
 
+		it('shall understand a number', () => {
+			const model = {
+				value: {
+					contains: num
+				}
+			};
+			const result = valid(num*100, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall validate a sufix string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid('hello' + str, model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall validate a prefix string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid(str + 'world', model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall validate a interfix string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid('hello' + str + 'world', model);
+			expect(result).toEqual(true);
+		});
+
+		it('shall NOT validate an false string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid(str.substr(1), model);
+			expect(result).toEqual(false);
+		});
+
+		it('shall NOT validate an empty string', () => {
+			const model = {
+				value: {
+					contains: str
+				}
+			};
+			const result = valid('', model);
+			expect(result).toEqual(false);
+		});
+
+	});
 });
