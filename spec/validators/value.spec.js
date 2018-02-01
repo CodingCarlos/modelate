@@ -237,6 +237,40 @@ describe(' - Date validator', () => {
 			const result = valid('', model);
 			expect(result).toEqual(false);
 		});
+	});
 
+	describe('list filter', () => {
+
+		it('shall fail when non-array value parsed', () => {
+			const model = {
+				value: {
+					list: 'string'
+				}
+			};
+
+			expect(valid('string', model)).toEqual(false);
+		});
+
+		// Again the for loop here! ^^
+		for (let validType in typesKeys) {
+			describe('type ' + typesKeys[validType], () => {
+				const model = {
+					value: {}
+				};
+
+				beforeEach(function () {
+					const val = (typesKeys[validType] === 'object') ? util.clone(obj) : types[typesKeys[validType]];
+					model.value = { 
+						list: [val]
+					};
+				});
+
+				for (let check in typesKeys) {
+					it('shall not be equal than ' +  typesKeys[check], () => {
+						expect(valid(types[typesKeys[check]], model)).toEqual( (validType === check) );
+					});
+				}
+			});
+		}
 	});
 });
