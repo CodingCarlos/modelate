@@ -3,11 +3,13 @@ var valid = require('../../lib/validators/type');
 const str = 'Hello world';
 const obj = {hello: 'world'};
 const num = 42;
+const bool = true;
 
 const types = {
 	string: str,
 	object: obj, 
-	number: num
+	number: num,
+	boolean: bool
 };
 const typesKeys = Object.keys(types);
 
