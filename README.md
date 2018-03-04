@@ -195,9 +195,9 @@ Master version might not have the last test updates. Check out the `develop` bra
  - [ ] Validators
 	 - [x] Type
 	 - [x] Length
-	 - [ ] Value
-	 - [ ] Custom function
-	 - [ ] Date
+	 - [x] Value
+	 - [x] Custom function
+	 - [x] Date
 	 - [ ] Model
 
 # Contribute
