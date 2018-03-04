@@ -56,13 +56,17 @@ Validators are just functions. It will be executed for each property, and return
  - [Custom function](#custom-function)
  - [Date](#date)
  - [Model](#model)
+ - [Email](#email)
+ - [Regex](#regex)
  
 ## Type
 If the data has not the specifed type, validation will fail, and that field will not be added to final validated data.
 
+It uses typeof, so arrays will be considered valid objects. Also, there is a type "array", wich ensures data is an array.
+
 ```javascript
 {
-	type: String	// Check if data has a JS type (uses typeof)
+	type: String	// Check if data has a JS type
 }
 ```
   
@@ -118,7 +122,7 @@ Check if data is a JavaScript Date. Just need to set a boolean `date` parameter,
 
 ```javascript
 {
-	data: Boolean	// Check if data is a JS Date
+	date: Boolean	// Check if data is a JS Date
 }
 ```
 > _Remember that JavaScript dates has type `Object`_
@@ -167,6 +171,48 @@ var myGeopoint = {
 var batman = geopoint.modelate(myGeopoint);
 console.log(batman);
 ```
+
+## Email
+Check if data is an email. Might be just a boolean, or an object to check domains:
+
+```javascript
+{
+	email: Boolean	// Check if data is an email
+}
+```
+
+Also, to check domains:
+```javascript
+{
+	email: {
+		domain: 'gmail.com'
+	}
+}
+```
+
+Or, to enable more than one valid domains:
+```javascript
+{
+	email: {
+		domain: ['gmail.com', 'google.com']
+	}
+}
+```
+
+## Regex
+Test a regular expression over the data.
+```javascript
+{
+	regex: Regex	// Check if data is regex valid
+}
+```
+An example might be:
+```javascript
+{
+	regex: /[a]/
+}
+```
+This will validate `asd` but not `sdf`
 
 # Tests
 
