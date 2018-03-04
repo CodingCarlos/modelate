@@ -1,10 +1,12 @@
 /* Just a first basic test */
 var Modelate = require('../index');
+// In production, just change the require for:
+// var Modelate = require('modelate');
 
 var model = {
 	name: {
 		type: 'string',
-		length: {		// For now, length do nothng.
+		length: {
 			max: 10,
 			min: 1,
 		},
@@ -14,7 +16,7 @@ var model = {
 	},
 	surname: {
 		type: 'string',
-		length: {		// For now, length do nothng.
+		length: {
 			max: 3,
 			min: 1,
 		},
