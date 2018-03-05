@@ -248,7 +248,7 @@ describe(' - Date validator', () => {
 				}
 			};
 
-			expect(valid('string', model)).toEqual(false);
+			expect(valid('whatever', model)).toEqual(false);
 		});
 
 		// Again the for loop here! ^^
