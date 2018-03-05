@@ -265,7 +265,12 @@ Master version might not have the last test updates. Check out the `develop` bra
 	 - [x] Value
 	 - [x] Custom function
 	 - [x] Date
+	 - [x] Regex
+	 - [x] Email
 	 - [ ] Model (Need help with this #15)
+ - [x] Modifiers
+	 - [x] Default
+
 
 # Contribute
 You can use this code as you like. If you find a bug, or want to ask for a feature, just open an issue, and we'll do our best. If you can fix it, do a pull request to dev branch, and we promise to review it as fast as possible to merge it.
