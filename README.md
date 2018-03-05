@@ -47,6 +47,27 @@ var data = {
 
 var result = user.modelate(data); // => { name: 'Paco }
 ```
+
+# Modifiers
+Modifiers are just functions. It will be executed for each property, and return a modified (or not) version of the data to match requirements.
+
+ - [Default](#default)
+
+## Default
+If there are not data for that property, it will create a given default value:
+```javascript
+{
+	default: String	// Check if data has a JS type
+}
+```
+For example:
+```javascript
+{
+	default: 'Default value'
+}
+```
+So, if no value given, the object will be modified to add that field with `Default value` value.
+
 # Validators
 Validators are just functions. It will be executed for each property, and return a boolean value indicating if the content match the model requirements or not. 
 
