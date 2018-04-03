@@ -27,6 +27,16 @@ describe(' - Length validator', () => {
 				expect(valid(str, eqModel)).toEqual(true);
 			});
 
+			it('shall NOT validate undefined string', () => {
+				const eqModel = { length: { eq: (strLen - 1) } };
+				expect(valid(undefined, eqModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null string', () => {
+				const eqModel = { length: { eq: (strLen - 1) } };
+				expect(valid(null, eqModel)).toEqual(false);
+			});
+
 			it('shall NOT validate string with string.length - 1', () => {
 				const eqModel = { length: { eq: (strLen - 1) } };
 				expect(valid(str, eqModel)).toEqual(false);
@@ -44,6 +54,16 @@ describe(' - Length validator', () => {
 				expect(valid(arr, eqModel)).toEqual(true);
 			});
 
+			it('shall NOT validate undefined string', () => {
+				const eqModel = { length: { eq: arrLen } };
+				expect(valid(undefined, eqModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null string', () => {
+				const eqModel = { length: { eq: arrLen } };
+				expect(valid(null, eqModel)).toEqual(false);
+			});
+
 			it('shall NOT validate array with array.length - 1', () => {
 				const eqModel = { length: { eq: (arrLen - 1) } };
 				expect(valid(arr, eqModel)).toEqual(false);
@@ -59,35 +79,55 @@ describe(' - Length validator', () => {
 	describe('max filter', () => {
 		describe('strings', () => {
 			it('shall validate string with max string.length', () => {
-				const eqModel = { length: { max: strLen } };
-				expect(valid(str, eqModel)).toEqual(true);
+				const maxModel = { length: { max: strLen } };
+				expect(valid(str, maxModel)).toEqual(true);
+			});
+
+			it('shall NOT validate undefined', () => {
+				const maxModel = { length: { max: (strLen - 1) } };
+				expect(valid(undefined, maxModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null', () => {
+				const maxModel = { length: { max: (strLen - 1) } };
+				expect(valid(null, maxModel)).toEqual(false);
 			});
 
 			it('shall NOT validate string with max string.length - 1', () => {
-				const eqModel = { length: { max: (strLen - 1) } };
-				expect(valid(str, eqModel)).toEqual(false);
+				const maxModel = { length: { max: (strLen - 1) } };
+				expect(valid(str, maxModel)).toEqual(false);
 			});
 
 			it('shall validate string with max string.length + 1', () => {
-				const eqModel = { length: { max: (strLen + 1) } };
-				expect(valid(str, eqModel)).toEqual(true);
+				const maxModel = { length: { max: (strLen + 1) } };
+				expect(valid(str, maxModel)).toEqual(true);
 			});
 		});
 
 		describe('arrays', () => {
 			it('shall validate array with max array.length', () => {
-				const eqModel = { length: { max: arrLen } };
-				expect(valid(arr, eqModel)).toEqual(true);
+				const maxModel = { length: { max: arrLen } };
+				expect(valid(arr, maxModel)).toEqual(true);
+			});
+
+			it('shall NOT validate undefined', () => {
+				const maxModel = { length: { max: (arrLen - 1) } };
+				expect(valid(undefined, maxModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null', () => {
+				const maxModel = { length: { max: (arrLen - 1) } };
+				expect(valid(null, maxModel)).toEqual(false);
 			});
 
 			it('shall NOT validate array with max array.length - 1', () => {
-				const eqModel = { length: { max: (arrLen - 1) } };
-				expect(valid(arr, eqModel)).toEqual(false);
+				const maxModel = { length: { max: (arrLen - 1) } };
+				expect(valid(arr, maxModel)).toEqual(false);
 			});
 
 			it('shall validate array with max array.length + 1', () => {
-				const eqModel = { length: { max: (arrLen + 1) } };
-				expect(valid(arr, eqModel)).toEqual(true);
+				const maxModel = { length: { max: (arrLen + 1) } };
+				expect(valid(arr, maxModel)).toEqual(true);
 			});
 		});
 	});
@@ -95,35 +135,55 @@ describe(' - Length validator', () => {
 	describe('min filter', () => {
 		describe('strings', () => {
 			it('shall validate string with min string.length', () => {
-				const eqModel = { length: { min: strLen } };
-				expect(valid(str, eqModel)).toEqual(true);
+				const minModel = { length: { min: strLen } };
+				expect(valid(str, minModel)).toEqual(true);
+			});
+
+			it('shall NOT validate undefined', () => {
+				const minModel = { length: { min: strLen } };
+				expect(valid(undefined, minModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null', () => {
+				const minModel = { length: { min: strLen } };
+				expect(valid(null, minModel)).toEqual(false);
 			});
 
 			it('shall validate string with min string.length - 1', () => {
-				const eqModel = { length: { min: (strLen - 1) } };
-				expect(valid(str, eqModel)).toEqual(true);
+				const minModel = { length: { min: strLen -1 } };
+				expect(valid(str, minModel)).toEqual(true);
 			});
 
 			it('shall NOT validate string with min string.length + 1', () => {
-				const eqModel = { length: { min: (strLen + 1) } };
-				expect(valid(str, eqModel)).toEqual(false);
+				const minModel = { length: { min: strLen + 1 } };
+				expect(valid(str, minModel)).toEqual(false);
 			});
 		});
 
 		describe('arrays', () => {
 			it('shall validate array with min array.length', () => {
-				const eqModel = { length: { min: arrLen } };
-				expect(valid(arr, eqModel)).toEqual(true);
+				const minModel = { length: { min: arrLen } };
+				expect(valid(arr, minModel)).toEqual(true);
+			});
+
+			it('shall NOT validate undefined', () => {
+				const minModel = { length: { min: arrLen } };
+				expect(valid(undefined, minModel)).toEqual(false);
+			});
+
+			it('shall NOT validate null', () => {
+				const minModel = { length: { min: arrLen } };
+				expect(valid(null, minModel)).toEqual(false);
 			});
 
 			it('shall validate array with min array.length - 1', () => {
-				const eqModel = { length: { min: (arrLen - 1) } };
-				expect(valid(arr, eqModel)).toEqual(true);
+				const minModel = { length: { min: (arrLen - 1) } };
+				expect(valid(arr, minModel)).toEqual(true);
 			});
 
 			it('shall NOT validate array with min array.length + 1', () => {
-				const eqModel = { length: { min: (arrLen + 1) } };
-				expect(valid(arr, eqModel)).toEqual(false);
+				const minModel = { length: { min: (arrLen + 1) } };
+				expect(valid(arr, minModel)).toEqual(false);
 			});
 		});
 	});
