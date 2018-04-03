@@ -8,7 +8,7 @@ const dataExample = {
 	property: 'hello'
 };
 
-describe('Modulate exported', () => {
+describe('Exported Modelate', () => {
 	it('shall be a function (a constructor)', () => {
 		expect(typeof Modelate).toEqual('function');
 	});
@@ -61,26 +61,49 @@ describe('Modulate exported', () => {
 		});
 	});
 	
-	describe('modelate', () => {
+	describe('modelate()', () => {
 		it('shall return an empty object if called with no data', () => {
-			const User = Modelate(modelName).set({modelExample});
+			const User = new Modelate(modelName).set(modelExample);
 			const data = User.modelate();
+
 			expect(data).toBeDefined();
-			expect(Object.assign({}, data)).toEqual(Object.assign({}, {}));
+			expect(data.data).toBeDefined();
+			expect(data.data).toEqual({});
+			expect(data.error).toBeDefined();
+			expect(data.error).toEqual(null);
 		});
 
 		it('shall return an empty object if called without an object', () => {
-			const User = Modelate(modelName).set({modelExample});
+			const User = new Modelate(modelName).set(modelExample);
 			const data = User.modelate(1);
+
 			expect(data).toBeDefined();
-			expect(Object.assign({}, data)).toEqual(Object.assign({}, {}));
+			expect(data.data).toBeDefined();
+			expect(data.data).toEqual({});
+			expect(data.error).toBeDefined();
+			expect(data.error).toEqual(null);
 		});
 
 		it('shall return the same object if no model set', () => {
-			const User = Modelate(modelName).set(modelExample);
+			const User = new Modelate(modelName);
 			const data = User.modelate(dataExample);
+			
 			expect(data).toBeDefined();
-			expect(Object.assign({}, data)).toEqual(Object.assign({}, dataExample));
+			expect(data.data).toBeDefined();
+			expect(data.data).toEqual(dataExample);
+			expect(data.error).toBeDefined();
+			expect(data.error).toEqual(null);
+		});
+
+		it('shall return the same object if model set', () => {
+			const User = new Modelate(modelName).set(modelExample);
+			const data = User.modelate(dataExample);
+			
+			expect(data).toBeDefined();
+			expect(data.data).toBeDefined();
+			expect(data.data).toEqual(dataExample);
+			expect(data.error).toBeDefined();
+			expect(data.error).toEqual(null);
 		});
 	});
 });
