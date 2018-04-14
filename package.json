@@ -1,6 +1,6 @@
 {
   "name": "modelate",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "A simple data modeling tool for NodeJS",
   "main": "index.js",
   "scripts": {
