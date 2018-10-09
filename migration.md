@@ -6,7 +6,7 @@ If you have been using this package in versions under 0.x, you have to update yo
 The major change in v1 is the way to display modelated data and errors. Now, its an object with both properties.
 
 So, just update the calls to modelate:
-```
+```javascript
 var Modelate = require('modelate');
 
 var model = { ... };
@@ -16,7 +16,7 @@ var result = user.modelate(data);
 
 ```
 to
-```
+```javascript
 var result = user.modelate(data).data; 
 
 ```
