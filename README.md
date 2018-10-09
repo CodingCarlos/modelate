@@ -7,6 +7,9 @@
 
 A data modeling tool for NodeJS. It's 100% database agnostic, and 100% customizable.
 
+# Warning! Breaking changes in v1.0!
+If you have been using this package in versions under 1.0.0, you have to update your code. [Follow the migration guide](migration.md) to use the v1.x library. 
+
 # How to install
 Use NPM to install the package:
 ```
@@ -45,7 +48,19 @@ var data = {
 	age: 17  // Age does not match with min value
 };
 
-var result = user.modelate(data); // => { name: 'Paco }
+var result = user.modelate(data); 
+/* Result:
+{ data: { 
+	name: 'Paco 
+  }, 
+  error: [{ 
+  	model: 'User', 
+  	field: 'age', 
+  	validator: 'value', 
+  	constrains: { max: 95, min: 18 }
+  }]
+}
+*/
 ```
 
 # Modifiers
@@ -55,12 +70,7 @@ Modifiers are just functions. It will be executed for each property, and return 
 
 ## Default
 If there are not data for that property, it will create a given default value:
-```javascript
-{
-	default: String	// Check if data has a JS type
-}
-```
-For example:
+
 ```javascript
 {
 	default: 'Default value'
@@ -237,39 +247,17 @@ This will validate `asd` but not `sdf`
 
 # Tests
 
-I'm currently adding tests to this code. I'm using Jasmine, and saving tests in `/spec` folder.
+Are built with Jasmine, and stored in `/spec` folder.
+
+First time you run tests, you might need to install Jasmine, and other dependencies. Just execute:
+```
+npm install
+```
 
 To run tests, just execute:
 ```
 npm test
 ```
-
-First time you run tests, you might need to install Jasmine, and other possible test dependencies. To do it fastly, just execute:
-```
-npm install
-```
-
-And now you can run tests ^^
-
-## Test coverage:
-Master version might not have the last test updates. Check out the `develop` branch to see the last updates. Also, the actual test coverage (in `develop` branch) is fully referenced in #3 issue.
-
- - [x] Core
-	 - [x] Exported module
-	 - [x] Model
-	 - [x] Modelate
-	 - [x] Validate
- - [ ] Validators
-	 - [x] Type
-	 - [x] Length
-	 - [x] Value
-	 - [x] Custom function
-	 - [x] Date
-	 - [x] Regex
-	 - [x] Email
-	 - [ ] Model (Need help with this #15)
- - [x] Modifiers
-	 - [x] Default
 
 
 # Contribute
