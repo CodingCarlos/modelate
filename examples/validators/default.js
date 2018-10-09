@@ -6,12 +6,15 @@ var Modelate = require('../../index');
 var model = {
 	name: {
 		default: 'I am the default value'
-	}
+	},
+	surname: {
+		default: 'No surname setted'
+	} 
 };
 var user = Modelate('User').set(model);
 
-var data = {};
+var data = {surname: 'Santos'};
 var result = user.modelate(data);
 
 
-console.log(result);	// Shall be { name: 'I am the default value' }
+console.log(result);	// Shall be { name: 'I am the default value', surname: 'Santos' }
