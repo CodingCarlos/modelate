@@ -39,23 +39,33 @@ describe(' - Modelate', () => {
 
 	describe('without params', () => {
 		it('shall return an empty object if no modelName specified', () => {
-			expect(Modelate.modelate(dataExample)).toEqual({});
+			expect(Modelate.modelate(dataExample)).toEqual({data: {}, error: null});
 		});
 
 		it('shall return an empty object if no modelName specified and no params', () => {
-			expect(Modelate.modelate()).toEqual({});
+			expect(Modelate.modelate()).toEqual({data: {}, error: null});
 		});
 
 
 		it('shall return an empty object if modelName specified', () => {
 			Modelate.modelName = modelName;
-			expect(Modelate.modelate(dataExample)).toEqual({});
+			const result = new Modelate.modelate(dataExample);
+			
+			expect(typeof result).toEqual('object');
+			expect(result.data).toEqual({});
+			expect(result.error).toEqual(null);
+			
 			delete Modelate.modelName;
 		});
 
-		it('shall return an empty object if modelName specified and no params', () => {
+		it('shall return an empty modelate object if modelName specified and no params', () => {
 			Modelate.modelName = modelName;
-			expect(Modelate.modelate()).toEqual({});
+			const result = new Modelate.modelate();
+			
+			expect(typeof result).toEqual('object');
+			expect(result.data).toEqual({});
+			expect(result.error).toEqual(null);
+			
 			delete Modelate.modelName;
 		});
 
@@ -72,7 +82,7 @@ describe(' - Modelate', () => {
 				// Modelate response
 				const response = Modelate.modelate(data);
 
-				expect(response).toEqual(dataExample);
+				expect(response.data).toEqual(dataExample);
 
 				// Reset Modelate
 				delete Modelate.modelName;
